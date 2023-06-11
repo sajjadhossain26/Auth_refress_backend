@@ -26,6 +26,7 @@ const getSingleUser = asyncHandler(async (req, res) => {
   const { id } = req.params;
 
   const user = await User.findById(id).select("-password").lean();
+  console.log(req.email);
 
   if (!user) {
     return res.status(400).json({ message: "No user found" });
